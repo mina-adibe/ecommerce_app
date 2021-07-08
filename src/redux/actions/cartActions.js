@@ -7,3 +7,11 @@ export function addToCart(cartItemToAdd) {
 export function removeFromCart(cartItemToRemove) {
   return { type: types.REMOVE_FROM_CART, payload: cartItemToRemove };
 }
+
+export function increaseQuantity(item) {
+  return { type: types.INCREASE, payload: item };
+}
+
+export function decreaseQuantity(item) {
+  return { type: types.DECREASE, payload: item };
+}
