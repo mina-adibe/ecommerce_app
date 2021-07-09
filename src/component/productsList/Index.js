@@ -1,32 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loadProducts } from "../../redux/actions/productsActions";
+import { ProductCard } from "../index.js";
+import Loader from "react-loader-spinner";
 
-import { ProductCard } from "../index";
-
-const ProductsList = ({ products, loadProducts }) => {
+const ProductsList = ({ products, loadProducts, searchxxx }) => {
   useEffect(() => {
     loadProducts();
   }, []);
 
-  const ProductsData = products.map((elm) => {
-    return (
-      <ProductCard
-        key={elm.id}
-        category={elm.category}
-        title={elm.title}
-        description={elm.description}
-        price={elm.price}
-        image={elm.image}
-      />
-    );
+  const ProductsData = products.map((item) => {
+    return <ProductCard key={item.id} item={item} />;
+  });
+
+  const ProductsDataFromSearch = searchxxx.map((item) => {
+    return <ProductCard key={item.id} item={item} />;
   });
 
   return (
-    <div>
-      <div>{products.length}</div>
-      <div className="grid grid-cols-4 gap-2">{ProductsData}</div>
+    <div className="flex flex-wrap  overflow-hidden px-12">
+      {searchxxx.length >= 1 ? (
+        <div className="grid xl:grid-cols-5 sm:grid-cols-2  md:grid-cols-3 gap-2">
+          {ProductsDataFromSearch}
+        </div>
+      ) : (
+        <div className="grid xl:grid-cols-5 sm:grid-cols-2  md:grid-cols-3 gap-2">
+          {products.length === 0 ? (
+            <div className="flex w-screen h-96 items-center justify-center">
+              <Loader
+                type="ThreeDots"
+                color="#2BAD60"
+                height="100"
+                width="100"
+              />
+            </div>
+          ) : (
+            ProductsData
+          )}
+        </div>
+      )}
     </div>
   );
 };
@@ -39,6 +52,7 @@ ProductsList.propTypes = {
 function mapStateToProps(state, ownProps) {
   return {
     products: state.products,
+    searchxxx: state.search,
   };
 }
 
@@ -48,6 +62,7 @@ const mapDispatchToProps = {
 
 ProductsList.defaultProps = {
   products: [],
+  searchxxx: [],
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsList);
