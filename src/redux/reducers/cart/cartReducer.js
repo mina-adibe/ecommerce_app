@@ -11,12 +11,11 @@ import {
 export default function cart(state = initialState.cartItems, action) {
   switch (action.type) {
     case types.ADD_TO_CART:
-      console.log("add in reducer");
       return addItemToCart(state, action.payload);
 
     case types.REMOVE_FROM_CART:
       debugger;
-      console.log("remove from  reducer");
+
       return removeItemFromCart(state, action.payload);
 
     case types.INCREASE:

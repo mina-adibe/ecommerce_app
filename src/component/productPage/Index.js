@@ -10,7 +10,6 @@ const ProductPage = ({ loadProducts, products }) => {
     loadProducts();
   }, []);
 
-  console.log("props?????", category, title, description, price, image);
   return (
     <div className="grid grid-cols-2 gap-2">
       <div>

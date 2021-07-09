@@ -24,7 +24,7 @@ const Checkout = ({ clearCart }) => {
       email: Yup.string().email("Invalid email format").required("Required!"),
     }),
     onSubmit: (values) => {
-      console.log(alert(JSON.stringify(values, null, 2)));
+      alert(JSON.stringify(values, null, 2));
       clearCart();
     },
   });
