@@ -1,6 +1,9 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { clearCart } from "../../redux/actions/cartActions";
@@ -27,8 +30,8 @@ const Checkout = ({ clearCart }) => {
   });
 
   return (
-    <div className="w-1/2 mx-auto">
-      <h1>Review Order</h1>
+    <div className="w-1/2 mx-auto ">
+      <h1 className="text-center text-5xl text-gray-600 my-11">Review Order</h1>
 
       <form className="space-y-4 text-gray-700" onSubmit={formik.handleSubmit}>
         <div className="flex flex-wrap">
@@ -55,14 +58,23 @@ const Checkout = ({ clearCart }) => {
             <label className="block mb-1" for="formGridCode_card">
               Phone
             </label>
-            <input
-              className="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+
+            <PhoneInput
+              inputStyle={{
+                width: "100%",
+                height: "2.5rem ",
+                borderRadius: "0.5rem",
+                fontSize: "1rem",
+                lineHeight: "1.5rem",
+                borderWidth: "1px",
+              }}
+              country={"eg"}
               type="number"
               name="phone"
               value={formik.values.phone}
-              onChange={formik.handleChange}
-              id="formGridCode_card"
+              onChange={(e) => formik.setFieldValue("phone", e)}
             />
+
             {formik.errors.phone && formik.touched.phone && (
               <p className="text-red-600">{formik.errors.phone}</p>
             )}
