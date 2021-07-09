@@ -15,8 +15,6 @@ const ShoppingCart = ({
   decreaseQuantity,
   removeFromCart,
 }) => {
-  console.log("cart items :????????????", cartItems);
-
   return (
     <div>
       <div className="p-0">
@@ -84,6 +82,9 @@ const ShoppingCart = ({
                             [-]
                           </span>
                         </li>
+                        <li>
+                          <Link to={`/checkout`}>PROCEED TO CHECKOUT</Link>
+                        </li>
                       </div>
                     </ul>
                     <span> {item.quantity} </span>
@@ -116,6 +117,7 @@ ShoppingCart.propTypes = {
   increaseQuantity: PropTypes.func.isRequired,
   decreaseQuantity: PropTypes.func.isRequired,
 };
+
 ShoppingCart.defaultProps = {
   cartItems: [],
 };
