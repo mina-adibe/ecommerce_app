@@ -1,5 +1,4 @@
 import React from "react";
-import shoppingCart from "../../assets/images/shopping-cart.svg";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
@@ -132,7 +131,6 @@ const mapDispatchToProps = {
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,
-  clearCart,
 };
 
 ShoppingCart.propTypes = {
@@ -140,7 +138,6 @@ ShoppingCart.propTypes = {
   removeFromCart: PropTypes.func.isRequired,
   increaseQuantity: PropTypes.func.isRequired,
   decreaseQuantity: PropTypes.func.isRequired,
-  clearCart: PropTypes.func.isRequired,
 };
 
 ShoppingCart.defaultProps = {

@@ -3,11 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { productSearch } from "../../redux/actions/searchActions";
 
-const SearchBar = ({ searchItems, productSearch }) => {
-  useEffect(() => {
-    console.log("*********>>>>>>>?????searchItems:", searchItems);
-  }, [searchItems]);
-
+const SearchBar = ({ productSearch }) => {
   return (
     <div>
       <input
@@ -21,23 +17,12 @@ const SearchBar = ({ searchItems, productSearch }) => {
   );
 };
 
-function mapStateToProps(state, ownProps) {
-  return {
-    searchItems: state.searchItems,
-  };
-}
-
 const mapDispatchToProps = {
   productSearch,
 };
 
 SearchBar.propTypes = {
-  searchItems: PropTypes.array.isRequired,
   productSearch: PropTypes.func.isRequired,
 };
 
-SearchBar.defaultProps = {
-  searchItems: [],
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default connect(null, mapDispatchToProps)(SearchBar);
