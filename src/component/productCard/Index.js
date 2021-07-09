@@ -27,32 +27,26 @@ const productCard = ({ item, addToCart, removeFromCart }) => {
                   </Link>
                 </div>
                 <div className="p-4">
-                  <span className="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">
+                  <span className="inline-block   leading-none bg-orange-300 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">
                     {category}
                   </span>
                   <h2 className="mt-2 mb-2  font-bold">
                     <Link to={`/products/${id}`}>{title}</Link>
                   </h2>
-
-                  <div className="mt-3 flex items-center"></div>
+                  <div>
+                    <span className="flex items-center mb-1 text-indigo-900 ">
+                      Price: {price}
+                    </span>
+                  </div>
                 </div>
                 <div className="p-4 border-t border-b text-xs text-gray-700">
-                  <span className="flex items-center mb-1">Price: {price}</span>
                   <button
                     onClick={() => {
                       addToCart(item);
                     }}
-                    className="bg-gray-600 w-full hover:bg-blue-light text-white font-bold py-2 px-4 border-b-4 border-blue-dark hover:border-blue rounded"
+                    className="bg-green-700  w-full hover:bg-blue-light text-white font-bold py-2 px-4 border-b-4 border-blue-dark hover:border-blue rounded"
                   >
                     add to cart
-                  </button>
-                  <button
-                    onClick={() => {
-                      removeFromCart(item);
-                    }}
-                    className="bg-red-700 w-full hover:bg-blue-light text-white font-bold py-2 px-4 border-b-4 border-blue-dark hover:border-blue rounded"
-                  >
-                    remove from cart
                   </button>
                 </div>
               </div>
