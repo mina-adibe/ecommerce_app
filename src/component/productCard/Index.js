@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { addToCart, removeFromCart } from "../../redux/actions/cartActions";
 
-const productCard = ({ category, title, price, image, id }) => {
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
+const productCard = ({ item, addToCart, removeFromCart }) => {
+  const { category, title, price, image, id } = item;
   return (
     <div>
       <div className="antialiased  text-gray-900 font-sans p-6">
@@ -33,8 +38,21 @@ const productCard = ({ category, title, price, image, id }) => {
                 </div>
                 <div className="p-4 border-t border-b text-xs text-gray-700">
                   <span className="flex items-center mb-1">Price: {price}</span>
-                  <button class="bg-gray-600 hover:bg-blue-light text-white font-bold py-2 px-4 border-b-4 border-blue-dark hover:border-blue rounded">
+                  <button
+                    onClick={() => {
+                      addToCart(item);
+                    }}
+                    className="bg-gray-600 w-full hover:bg-blue-light text-white font-bold py-2 px-4 border-b-4 border-blue-dark hover:border-blue rounded"
+                  >
                     add to cart
+                  </button>
+                  <button
+                    onClick={() => {
+                      removeFromCart(item);
+                    }}
+                    className="bg-red-700 w-full hover:bg-blue-light text-white font-bold py-2 px-4 border-b-4 border-blue-dark hover:border-blue rounded"
+                  >
+                    remove from cart
                   </button>
                 </div>
               </div>
@@ -46,4 +64,14 @@ const productCard = ({ category, title, price, image, id }) => {
   );
 };
 
-export default productCard;
+productCard.propTypes = {
+  addToCart: PropTypes.func.isRequired,
+  removeFromCart: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = {
+  addToCart,
+  removeFromCart,
+};
+
+export default connect(null, mapDispatchToProps)(productCard);
