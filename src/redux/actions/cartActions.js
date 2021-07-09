@@ -15,3 +15,7 @@ export function increaseQuantity(item) {
 export function decreaseQuantity(item) {
   return { type: types.DECREASE, payload: item };
 }
+
+export function clearCart() {
+  return { type: types.CLEAR_CART };
+}

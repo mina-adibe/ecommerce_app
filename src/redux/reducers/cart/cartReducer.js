@@ -25,6 +25,9 @@ export default function cart(state = initialState.cartItems, action) {
     case types.DECREASE:
       return decreaseItem(state, action.payload);
 
+    case types.CLEAR_CART:
+      return (state = []);
+
     default:
       return state;
   }

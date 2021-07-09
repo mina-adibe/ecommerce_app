@@ -1,9 +1,11 @@
 import React from "react";
-
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { clearCart } from "../../redux/actions/cartActions";
 
-const Checkout = () => {
+const Checkout = ({ clearCart }) => {
   const formik = useFormik({
     initialValues: {
       address: "",
@@ -19,7 +21,8 @@ const Checkout = () => {
       email: Yup.string().email("Invalid email format").required("Required!"),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      console.log(alert(JSON.stringify(values, null, 2)));
+      clearCart();
     },
   });
 
@@ -95,5 +98,12 @@ const Checkout = () => {
     </div>
   );
 };
+const mapDispatchToProps = {
+  clearCart,
+};
 
-export default Checkout;
+Checkout.propTypes = {
+  clearCart: PropTypes.func.isRequired,
+};
+
+export default connect(null, mapDispatchToProps)(Checkout);
