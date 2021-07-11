@@ -5,7 +5,7 @@ import { loadProducts } from "../../redux/actions/productsActions";
 import { ProductCard } from "../index.js";
 import Loader from "react-loader-spinner";
 
-const ProductsList = ({ products, loadProducts, searchxxx }) => {
+const ProductsList = ({ products, loadProducts, searchProduct }) => {
   useEffect(() => {
     loadProducts();
   }, []);
@@ -14,13 +14,13 @@ const ProductsList = ({ products, loadProducts, searchxxx }) => {
     return <ProductCard key={item.id} item={item} />;
   });
 
-  const ProductsDataFromSearch = searchxxx.map((item) => {
+  const ProductsDataFromSearch = searchProduct.map((item) => {
     return <ProductCard key={item.id} item={item} />;
   });
 
   return (
     <div className="flex flex-wrap  overflow-hidden px-12">
-      {searchxxx.length >= 1 ? (
+      {searchProduct.length >= 1 ? (
         <div className="grid xl:grid-cols-5 sm:grid-cols-2  md:grid-cols-3 gap-2">
           {ProductsDataFromSearch}
         </div>
@@ -49,10 +49,10 @@ ProductsList.propTypes = {
   products: PropTypes.array.isRequired,
 };
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
     products: state.products,
-    searchxxx: state.search,
+    searchProduct: state.search,
   };
 }
 
@@ -62,7 +62,7 @@ const mapDispatchToProps = {
 
 ProductsList.defaultProps = {
   products: [],
-  searchxxx: [],
+  searchProduct: [],
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsList);

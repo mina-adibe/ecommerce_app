@@ -5,7 +5,7 @@ import { addToCart, removeFromCart } from "../../redux/actions/cartActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-const productCard = ({ item, addToCart, removeFromCart }) => {
+const productCard = ({ item, addToCart }) => {
   const { category, title, price, image, id } = item;
   return (
     <div>
@@ -57,7 +57,6 @@ const productCard = ({ item, addToCart, removeFromCart }) => {
 
 productCard.propTypes = {
   addToCart: PropTypes.func.isRequired,
-  removeFromCart: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = {

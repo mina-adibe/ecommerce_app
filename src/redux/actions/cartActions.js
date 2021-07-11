@@ -19,3 +19,7 @@ export function decreaseQuantity(item) {
 export function clearCart() {
   return { type: types.CLEAR_CART };
 }
+
+export function getTotal() {
+  return { type: types.GET_TOTALS };
+}

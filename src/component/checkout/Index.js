@@ -139,7 +139,7 @@ const mapDispatchToProps = {
   clearCart,
 };
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
     cartItems: state.cart,
   };

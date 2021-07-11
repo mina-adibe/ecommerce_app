@@ -14,8 +14,6 @@ export default function cart(state = initialState.cartItems, action) {
       return addItemToCart(state, action.payload);
 
     case types.REMOVE_FROM_CART:
-      debugger;
-
       return removeItemFromCart(state, action.payload);
 
     case types.INCREASE:
@@ -25,12 +23,7 @@ export default function cart(state = initialState.cartItems, action) {
       return decreaseItem(state, action.payload);
 
     case types.CLEAR_CART:
-      return (state = []);
-
-    case types.GET_TOTALS:
-      const totalOfItem = state.map((elm) => elm.price * elm.quantity);
-      const total = totalOfItem.reduce((sum, li) => sum + li.total, 0);
-      return total;
+      return [];
 
     default:
       return state;

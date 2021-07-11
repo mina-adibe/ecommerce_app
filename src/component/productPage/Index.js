@@ -1,15 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { loadProducts } from "../../redux/actions/productsActions";
+
 import PropTypes from "prop-types";
 import { addToCart } from "../../redux/actions/cartActions";
 
-const ProductPage = ({ loadProducts, products, addToCart }) => {
-  const { category, title, description, price, image } = products;
-
-  useEffect(() => {
-    loadProducts();
-  }, []);
+const ProductPage = ({ product, addToCart }) => {
+  const { category, title, description, price, image } = product;
 
   return (
     <div className="grid grid-cols-2 gap-2 px-20">
@@ -35,9 +31,7 @@ const ProductPage = ({ loadProducts, products, addToCart }) => {
         </div>
         <div>
           <button
-            onClick={() => {
-              addToCart(products);
-            }}
+            onClick={() => addToCart(product)}
             className="bg-green-700 h-11 w-5/12 hover:bg-blue-light text-white font-bold py-2 px-4 border-b-4 border-blue-dark hover:border-blue rounded"
           >
             add to cart
@@ -49,14 +43,13 @@ const ProductPage = ({ loadProducts, products, addToCart }) => {
 };
 
 const mapDispatchToProps = {
-  loadProducts,
   addToCart,
 };
 
 function mapStateToProps(state, ownProps) {
   const id = +ownProps.match.params.id;
   return {
-    products: state.products.find((item) => item.id === id),
+    product: state.products.find((item) => item.id === id),
   };
 }
 
@@ -65,7 +58,7 @@ ProductPage.propTypes = {
   loadProducts: PropTypes.func.isRequired,
 };
 ProductPage.defaultProps = {
-  products: {},
+  product: {},
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);
