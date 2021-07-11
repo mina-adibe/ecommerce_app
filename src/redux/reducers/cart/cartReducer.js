@@ -27,6 +27,11 @@ export default function cart(state = initialState.cartItems, action) {
     case types.CLEAR_CART:
       return (state = []);
 
+    case types.GET_TOTALS:
+      const totalOfItem = state.map((elm) => elm.price * elm.quantity);
+      const total = totalOfItem.reduce((sum, li) => sum + li.total, 0);
+      return total;
+
     default:
       return state;
   }

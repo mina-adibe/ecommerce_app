@@ -13,10 +13,7 @@ const productCard = ({ item, addToCart, removeFromCart }) => {
         <div className="container mx-auto">
           <div className="flex flex-wrap -mx-4">
             <div className="w-full    p-4">
-              <div
-                href="/"
-                className="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
-              >
+              <div className="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
                 <div className="relative pb-48 overflow-hidden">
                   <Link to={`/products/${id}`}>
                     <img
