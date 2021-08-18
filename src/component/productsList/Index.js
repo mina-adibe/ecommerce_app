@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loadProducts } from "../../redux/actions/productsActions";
+import { postsRequest } from "../../redux/actions/productsActions";
 import { ProductCard } from "../index.js";
 import Loader from "react-loader-spinner";
 
-const ProductsList = ({ products, loadProducts, searchProduct }) => {
+const ProductsList = ({ products, postsRequest, searchProduct }) => {
   useEffect(() => {
-    loadProducts();
+    postsRequest();
   }, []);
 
   const ProductsData = products.map((item) => {
@@ -45,7 +45,7 @@ const ProductsList = ({ products, loadProducts, searchProduct }) => {
 };
 
 ProductsList.propTypes = {
-  loadProducts: PropTypes.func.isRequired,
+  postsRequest: PropTypes.func.isRequired,
   products: PropTypes.array.isRequired,
 };
 
@@ -57,7 +57,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  loadProducts,
+  postsRequest,
 };
 
 ProductsList.defaultProps = {
