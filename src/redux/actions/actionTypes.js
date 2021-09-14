@@ -15,3 +15,6 @@ export const FILTERED_ITEMS = "FILTERED_ITEMS";
 //get posts
 export const GET_POSTS_REQUEST = "GET_POSTS_REQUEST"; // firing saga
 export const GET_POSTS_RECIEVE = "GET_POSTS_RECIEVE"; // store response
+
+//Lang
+export const SET_LANG = "SET_LANG";

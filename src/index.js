@@ -5,14 +5,17 @@ import "./index.css";
 import App from "./component/App";
 import configureStore from "./redux/configureStore";
 import { Provider as ReduxProvider } from "react-redux";
+import { IntlProviderWrapper } from "./utility/context/Internationalization";
 
 const store = configureStore;
 
 ReactDOM.render(
   <ReduxProvider store={store}>
-    <Router>
-      <App />
-    </Router>
+    <IntlProviderWrapper>
+      <Router>
+        <App />
+      </Router>
+    </IntlProviderWrapper>
   </ReduxProvider>,
   document.getElementById("root")
 );
